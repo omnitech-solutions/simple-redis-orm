@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "simple_redis_orm"
+require "simple-redis-orm"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

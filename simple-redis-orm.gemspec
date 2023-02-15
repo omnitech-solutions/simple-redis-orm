@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../lib/simple_redis_orm/version', __FILE__)
+require File.expand_path('../lib/simple-redis-orm/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors = ["Desmond O'Leary"]
@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.files = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^exe/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(spec|features)/})
-  gem.name = "simple_redis_orm"
+  gem.name = "simple-redis-orm"
   gem.require_paths = ["lib"]
   gem.version = SimpleRedisOrm::VERSION
   gem.required_ruby_version = ">= 2.6.0"

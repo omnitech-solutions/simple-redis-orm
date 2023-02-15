@@ -2,10 +2,6 @@
 
 RSpec.describe SimpleRedisOrm do
   it "has a version number" do
-    expect(SimpleRedisOrm::VERSION).not_to be nil
-  end
-
-  it "does something useful" do
-    expect(false).to eq(true)
+    expect(SimpleRedisOrm::VERSION).not_to be_nil
   end
 end

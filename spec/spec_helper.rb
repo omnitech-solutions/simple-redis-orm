@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
-require "simple-redis-orm"
+require File.join(__dir__, "..", 'dev', 'setup')
+
+require 'redis_spec_helper'
+require 'coverage_helper'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

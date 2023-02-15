@@ -22,8 +22,15 @@ Gem::Specification.new do |gem|
   gem.metadata["source_code_uri"] = gem.homepage
   gem.metadata["changelog_uri"] = "#{gem.homepage}/CHANGELOG.md"
 
-  gem.add_development_dependency("rake", "~> 13.0.6")
-  gem.add_development_dependency("rspec", "~> 3.12.0")
-  gem.add_development_dependency("simplecov", "~> 0.21.2")
-  gem.add_development_dependency("codecov", "~> 0.6.0")
+  gem.add_runtime_dependency 'activesupport', '~> 6.1', '>= 6.1.7.2'
+  gem.add_runtime_dependency 'redis', '~> 4.0', '>= 4.0'
+  gem.add_runtime_dependency 'dry-struct', '~> 1.6'
+  gem.add_runtime_dependency 'msgpack', '~> 1.6', '>= 1.6'
+  gem.add_runtime_dependency 'connection_pool', '~> 2.3', '>= 2.3'
+
+  gem.add_development_dependency "rake", "~> 13.0.6"
+  gem.add_development_dependency "rspec", "~> 3.12.0"
+  gem.add_development_dependency "simplecov", "~> 0.21.2"
+  gem.add_development_dependency "codecov", "~> 0.6.0"
+  gem.add_development_dependency "mock_redis", "~> 0.36.0"
 end

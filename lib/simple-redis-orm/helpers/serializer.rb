@@ -15,23 +15,23 @@ module SimpleRedisOrm
         MessagePack.unpack(value)
       end
 
+      # rubocop:disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
       def deserialize_hash_value(hash)
         return if hash.nil?
 
         hash.transform_values do |v|
-          begin
-            next v if v.nil?
-            next v unless v.is_a?(String)
-            next v unless v.encoding == Encoding::ASCII_8BIT
+          next v if v.nil?
+          next v unless v.is_a?(String)
+          next v unless v.encoding == Encoding::ASCII_8BIT
 
-            v.strip.empty? ? v : MessagePack.unpack(v)
-          rescue => ex
-            next without_invalid_characters(v) if ex.class == ArgumentError
+          v.strip.empty? ? v : MessagePack.unpack(v)
+        rescue StandardError => e
+          next without_invalid_characters(v) if e.instance_of?(ArgumentError)
 
-            raise ex
-          end
+          raise e
         end.deep_symbolize_keys
       end
+      # rubocop:enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 
       private
 

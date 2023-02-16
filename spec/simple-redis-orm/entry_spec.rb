@@ -1,3 +1,5 @@
+# rubocop:disable RSpec/FilePath
+
 module SimpleRedisOrm
   RSpec.describe Entry do
     let(:subject_class) do
@@ -11,12 +13,10 @@ module SimpleRedisOrm
     end
 
     let(:id) { 'some-key' }
-    let(:attributes) { { password: 'some-password' }}
+    let(:attributes) { { password: 'some-password' } }
     let(:instance) { subject_class.new(id: 'desoleary@gmail.com', **attributes) }
 
-    let(:subject) do
-      instance.save
-    end
+    subject(:entry) { instance.save }
 
     describe '.new' do
       it 'initializes instance' do
@@ -48,7 +48,7 @@ module SimpleRedisOrm
 
     describe '.find' do
       it 'stores hash data into redis store' do
-        subject
+        entry
 
         actual = subject_class.find('desoleary@gmail.com')
         expect(actual.attributes).to eql(attributes)
@@ -56,3 +56,4 @@ module SimpleRedisOrm
     end
   end
 end
+# rubocop:enable RSpec/FilePath

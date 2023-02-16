@@ -49,7 +49,7 @@ module SimpleRedisOrm
         missing_keys = keys - attributes.keys
         return attributes if missing_keys.empty?
 
-        missing_hash = Hash[missing_keys.map { |x| [x, nil] }]
+        missing_hash = missing_keys.to_h { |x| [x, nil] }
         missing_hash.merge(attributes)
       end
     end

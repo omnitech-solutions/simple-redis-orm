@@ -3,7 +3,7 @@ RSpec.configure do |config|
     SimpleRedisOrm::Entry.redis = MockRedis.new
   end
 
-  config.before(:each) do
+  config.before do
     SimpleRedisOrm::Entry.redis.flushdb
   end
 end

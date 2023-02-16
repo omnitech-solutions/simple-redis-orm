@@ -1,3 +1,4 @@
+# rubocop:disable RSpec/FilePath
 module SimpleRedisOrm
   module Helpers
     RSpec.describe CoreCommands do
@@ -23,19 +24,19 @@ module SimpleRedisOrm
       let(:key) { 'some-key' }
       let(:field) { :field }
       let(:field_value) { 'some-value' }
-      let(:hash_value) { {field => field_value } }
+      let(:hash_value) { { field => field_value } }
       let(:other_field) { :other_field }
       let(:other_value) { 'other_value' }
-
       let(:instance) { subject_class.new(key: key) }
-      let(:subject) do
+
+      subject(:redis_command) do
         instance.set_hash(hash_value)
         instance
       end
 
       describe 'ClassMethods' do
         describe '.read_value' do
-          before(:each) { instance.set(other_value) }
+          before { instance.set(other_value) }
 
           it 'returns set simple value' do
             actual = subject_class.read_value(key)
@@ -46,7 +47,7 @@ module SimpleRedisOrm
 
         describe '.read_hash' do
           it 'returns original hash value' do
-            subject
+            redis_command
 
             expect(subject_class.read_hash(key)).to eql(hash_value)
           end
@@ -54,7 +55,7 @@ module SimpleRedisOrm
 
         describe '.read_by' do
           it 'returns original hash value' do
-            subject
+            redis_command
 
             expect(subject_class.read_by(key)).to eql(hash_value)
           end
@@ -69,3 +70,4 @@ module SimpleRedisOrm
     end
   end
 end
+# rubocop:enable RSpec/FilePath

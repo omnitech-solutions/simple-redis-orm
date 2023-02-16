@@ -2,6 +2,7 @@ module SimpleRedisOrm
   class ConnectionPoolProxy
     def initialize(pool)
       raise ArgumentError "Should only proxy ConnectionPool!" unless self.class.should_proxy?(pool)
+
       @pool = pool
     end
 
@@ -27,5 +28,4 @@ module SimpleRedisOrm
       end
     end
   end
-
 end

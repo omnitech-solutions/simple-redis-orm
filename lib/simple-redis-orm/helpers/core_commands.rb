@@ -54,12 +54,14 @@ module SimpleRedisOrm
         nil
       end
 
+      # rubocop:disable Naming/AccessorMethodName
       def set_hash(hash)
         raise ArgumentError, "'hash_value' must be a hash, found type: #{hash_value.class.name}" unless hash.is_a?(Hash)
 
         hash.each_pair { |sub_key, value| set_subhash(sub_key, value) }
         nil
       end
+      # rubocop:enable Naming/AccessorMethodName
 
       def exists
         redis.exists key
